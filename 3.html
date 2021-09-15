@@ -13,34 +13,42 @@
 
         gtag('config', 'G-N1E2NX4Z5F');
     </script>
+    <script>
+        function nightDayHandler(self) {
+            var target = document.querySelector('body');
+            if(self.value === 'night') {
+                target.style.backgroundColor = 'black';
+                target.style.color = 'white';
+                self.value = 'day';
+                //야간모드 일때, 글씨 색상을 'powderblue'로 변경합니다.
+                var alist = document.querySelectorAll('a');
+                var i = 0;
+                while(i<alist.length) {
+                    alist[i].style.color = 'powderblue';
+                    i=i+1;
+                }
+            } else {
+                target.style.backgroundColor = 'white';
+                target.style.color = 'black';
+                self.value = 'night';
+                //주간모드 일때, 글씨 색상을 'black'로 변경합니다.
+                var alist = document.querySelectorAll('a');
+                var i = 0;
+                while(i<alist.length) {
+                    alist[i].style.color = 'black';
+                    i=i+1;
+                }
+            }
+        }
+    </script>
 </haed>
 <body>
     <h1><a href="index.html">WEB</a></h1>
     <input type="button" value="night" onclick="
-        var target = document.querySelector('body');
-        if(this.value === 'night') {
-            target.style.backgroundColor = 'black';
-            target.style.color = 'white';
-            this.value = 'day';
-            //야간모드 일때, 글씨 색상을 'powderblue'로 변경합니다.
-            var alist = document.querySelectorAll('a');
-            var i = 0;
-            while(i<alist.length) {
-                alist[i].style.color = 'powderblue';
-                i=i+1;
-            }
-        } else {
-            target.style.backgroundColor = 'white';
-            target.style.color = 'black';
-            this.value = 'night';
-            //주간모드 일때, 글씨 색상을 'black'로 변경합니다.
-            var alist = document.querySelectorAll('a');
-            var i = 0;
-            while(i<alist.length) {
-                alist[i].style.color = 'black';
-                i=i+1;
-            }
-        }
+        nightDayHandler(this);
+    ">
+    <input type="button" value="night" onclick="
+        nightDayHandler(this);
     ">
     <div id="grid">
         <ol>
